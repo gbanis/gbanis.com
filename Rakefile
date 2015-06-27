@@ -14,6 +14,7 @@ require "rubygems"
 require "tmpdir"
 require "bundler/setup"
 require "jekyll"
+require "paint"
 
 GITHUB_REPONAME = "gbanis/gbanis.github.io"
 STOPWORDS = %w(i a about an are as at be by com for from how in is it of on or that the this to was what when where who will with the www)
@@ -91,31 +92,32 @@ namespace :site do
     # Commit your site files on master branch
     Dir.mktmpdir do |tmp|
 
-      print "Creating temp dir with site files..."
+      puts Paint["Creating temp dir with site files...", :yellow]
       cp_r "_site/.", tmp # Create temporary dir with _site files
       pwd = Dir.pwd # Save current dir
       Dir.chdir tmp # Change to temp dir
-      print " [Done]\n"
+      puts Paint["[Done]\n", :green]
 
-      print "Initializing repo..."
+      puts Paint["Initializing repo...", :yellow]
       system "git init"
-      print " [Done]\n"
+      puts Paint["[Done]\n", :green]
 
-      print "Committing changes to git..."
-      system "git add ."
-      message = "Site updated at #{Time.now.utc}"
-      system "git commit -m #{message.inspect}"
-      print " [Done]\n"
-
-      print "Changing local user to 'George Banis - gbanis@gmail.com'..."
+      puts Paint["Setting local user to: 'George Banis - gbanis@gmail.com'...", :yellow]
       system "git config --local user.name 'George Banis'"
       system "git config --local user.email 'gbanis@gmail.com'"
-      print " [Done]\n"
+      puts Paint["[Done]\n", :green]
 
-      print "Pushing (--force) to 'git@github.com-gbanis:#{GITHUB_REPONAME}.git'..."
+      puts Paint["Committing changes to git...", :yellow]
+      system "git add ."
+      puts "test"
+      message = "Site updated at #{Time.now.utc}"
+      system "git commit -m #{message.inspect}"
+      puts Paint["[Done]\n", :green]
+
+      puts Paint["Pushing (--force) to 'git@github.com-gbanis:#{GITHUB_REPONAME}.git'...", :yellow]
       system "git remote add origin git@github.com-gbanis:#{GITHUB_REPONAME}.git"
       system "git push origin master:refs/heads/master --force"
-      print " [Done]\n"
+      puts Paint["[Done]\n", :green]
 
       # Change back to the original directory
       Dir.chdir pwd
