@@ -12,7 +12,7 @@ author:       George Banis
 
 ## TL;DR
 
-Not long ago I decided to combine everything I know about SEO with my web development skills into a web application. This is how [Ruby SEO Tools](http://rubyseotools.com) was born, a tool that helps marketers analyze how well their blog posts are optimized for SEO.
+Not long ago, I decided to combine everything I know about SEO with my web development skills into a web application. This is how [Ruby SEO Tools](http://rubyseotools.com) was born, a tool that helps marketers analyze how well their blog posts are optimized for SEO.
 
 The first version of Ruby SEO Tools was built in just a handful of days&mdash;it could very well be the product of a hackathon. And since many friends of mine want to participate in a hackathon and aren't sure *how* to get organized, I decided I'd document my process in hopes that you could get an idea or two.
 
