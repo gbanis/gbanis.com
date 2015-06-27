@@ -17,8 +17,7 @@ require "jekyll"
 require "paint"
 
 GITHUB_REPONAME = "gbanis/gbanis.github.io"
-PRODUCTION_DIR = "~/personal/gbanis.com-production"
-DEVELOPMENT_DIR = "~/personal/gbanis.com"
+PRODUCTION_DIR = "../gbanis.com-production"
 STOPWORDS = %w(i a about an are as at be by com for from how in is it of on or that the this to was what when where who will with the www)
 
 namespace :new do
@@ -141,23 +140,17 @@ namespace :site do
   desc "Generate and depoloy: blog to master branch, source files to source branch"
   task :depoloy => [:generate] do
 
-    puts Paint["Changing to production directory...", :yellow]
-    system "cd #{PRODUCTION_DIR}"
-    puts Paint["[Done]\n", :green]
+    Dir.chdir(PRODUCTION_DIR) do
+      puts Paint["Committing changes...", :yellow]
+      system "git add ."
+      message = "Site updated at #{Time.now.utc}"
+      system "git commit -m #{message.inspect}"
+      puts Paint["[Done]\n", :green]
 
-    puts Paint["Committing changes...", :yellow]
-    system "git add ."
-    message = "Site updated at #{Time.now.utc}"
-    system "git commit -m #{message.inspect}"
-    puts Paint["[Done]\n", :green]
-
-    puts Paint["Pushing to 'git@github.com-gbanis:#{GITHUB_REPONAME}.git'...", :yellow]
-    system "git push origin master"
-    puts Paint["[Done]\n", :green]
-
-    # puts Paint["Changing to development directory...", :yellow]
-    # system "cd #{DEVELOPMENT_DIR}"
-    # puts Paint["[Done]\n", :green]
+      puts Paint["Pushing to 'git@github.com-gbanis:#{GITHUB_REPONAME}.git'...", :yellow]
+      system "git push origin master"
+      puts Paint["[Done]\n", :green]
+    end
   end
 end
 task :default => ["site:depoloy"]
