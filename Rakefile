@@ -145,11 +145,6 @@ namespace :site do
     system "cd #{PRODUCTION_DIR}"
     puts Paint["[Done]\n", :green]
 
-    puts Paint["Setting local user to: 'George Banis <gbanis@gmail.com>'...", :yellow]
-    system "git config --local user.name 'George Banis'"
-    system "git config --local user.email 'gbanis@gmail.com'"
-    puts Paint["[Done]\n", :green]
-
     puts Paint["Committing changes...", :yellow]
     system "git add ."
     message = "Site updated at #{Time.now.utc}"
@@ -160,9 +155,9 @@ namespace :site do
     system "git push origin master"
     puts Paint["[Done]\n", :green]
 
-    puts Paint["Changing to development directory...", :yellow]
-    system "cd #{DEVELOPMENT_DIR}"
-    puts Paint["[Done]\n", :green]
+    # puts Paint["Changing to development directory...", :yellow]
+    # system "cd #{DEVELOPMENT_DIR}"
+    # puts Paint["[Done]\n", :green]
   end
 end
 task :default => ["site:depoloy"]
