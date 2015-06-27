@@ -17,6 +17,8 @@ require "jekyll"
 require "paint"
 
 GITHUB_REPONAME = "gbanis/gbanis.github.io"
+PRODUCTION_DIR = "~/personal/gbanis.com-production"
+DEVELOPMENT_DIR = "~/personal/gbanis.com"
 STOPWORDS = %w(i a about an are as at be by com for from how in is it of on or that the this to was what when where who will with the www)
 
 namespace :new do
@@ -78,53 +80,91 @@ author:       George Banis
   end
 end
 
+# namespace :site do
+#   desc "Generate blog files"
+#   task :generate do
+#     Jekyll::Site.new(Jekyll.configuration({
+#       "source"      => ".",
+#       "destination" => "_site"
+#     })).process
+#   end
+
+#   desc "Generate and depoloy: blog to master branch, source files to source branch"
+#   task :depoloy => [:generate] do
+#     # Commit your site files on master branch
+#     Dir.mktmpdir do |tmp|
+
+#       puts Paint["Creating temp dir with site files...", :yellow]
+#       cp_r "_site/.", tmp # Create temporary dir with _site files
+#       pwd = Dir.pwd # Save current dir
+#       Dir.chdir tmp # Change to temp dir
+#       puts Paint["[Done]\n", :green]
+
+#       puts Paint["Initializing repo...", :yellow]
+#       system "git init"
+#       puts Paint["[Done]\n", :green]
+
+#       puts Paint["Setting local user to: 'George Banis - gbanis@gmail.com'...", :yellow]
+#       system "git config --local user.name 'George Banis'"
+#       system "git config --local user.email 'gbanis@gmail.com'"
+#       puts Paint["[Done]\n", :green]
+
+#       puts Paint["Committing changes to git...", :yellow]
+#       system "git add ."
+#       puts "test"
+#       message = "Site updated at #{Time.now.utc}"
+#       system "git commit -m #{message.inspect}"
+#       puts Paint["[Done]\n", :green]
+
+#       puts Paint["Pushing (--force) to 'git@github.com-gbanis:#{GITHUB_REPONAME}.git'...", :yellow]
+#       system "git remote add origin git@github.com-gbanis:#{GITHUB_REPONAME}.git"
+#       system "git push origin master:refs/heads/master --force"
+#       puts Paint["[Done]\n", :green]
+
+#       # Change back to the original directory
+#       Dir.chdir pwd
+#     end
+#   end
+# end
+
 namespace :site do
   desc "Generate blog files"
   task :generate do
+    puts Paint["Generating site files in '#{PRODUCTION_DIR}'...", :yellow]
     Jekyll::Site.new(Jekyll.configuration({
       "source"      => ".",
-      "destination" => "_site"
+      "destination" => PRODUCTION_DIR
     })).process
+    puts Paint["[Done]\n", :green]
   end
 
   desc "Generate and depoloy: blog to master branch, source files to source branch"
   task :depoloy => [:generate] do
-    # Commit your site files on master branch
-    Dir.mktmpdir do |tmp|
 
-      puts Paint["Creating temp dir with site files...", :yellow]
-      cp_r "_site/.", tmp # Create temporary dir with _site files
-      pwd = Dir.pwd # Save current dir
-      Dir.chdir tmp # Change to temp dir
-      puts Paint["[Done]\n", :green]
+    puts Paint["Changing to production directory...", :yellow]
+    system "cd #{PRODUCTION_DIR}"
+    puts Paint["[Done]\n", :green]
 
-      puts Paint["Initializing repo...", :yellow]
-      system "git init"
-      puts Paint["[Done]\n", :green]
+    puts Paint["Setting local user to: 'George Banis <gbanis@gmail.com>'...", :yellow]
+    system "git config --local user.name 'George Banis'"
+    system "git config --local user.email 'gbanis@gmail.com'"
+    puts Paint["[Done]\n", :green]
 
-      puts Paint["Setting local user to: 'George Banis - gbanis@gmail.com'...", :yellow]
-      system "git config --local user.name 'George Banis'"
-      system "git config --local user.email 'gbanis@gmail.com'"
-      puts Paint["[Done]\n", :green]
+    puts Paint["Committing changes...", :yellow]
+    system "git add ."
+    message = "Site updated at #{Time.now.utc}"
+    system "git commit -m #{message.inspect}"
+    puts Paint["[Done]\n", :green]
 
-      puts Paint["Committing changes to git...", :yellow]
-      system "git add ."
-      puts "test"
-      message = "Site updated at #{Time.now.utc}"
-      system "git commit -m #{message.inspect}"
-      puts Paint["[Done]\n", :green]
+    puts Paint["Pushing to 'git@github.com-gbanis:#{GITHUB_REPONAME}.git'...", :yellow]
+    system "git push origin master"
+    puts Paint["[Done]\n", :green]
 
-      puts Paint["Pushing (--force) to 'git@github.com-gbanis:#{GITHUB_REPONAME}.git'...", :yellow]
-      system "git remote add origin git@github.com-gbanis:#{GITHUB_REPONAME}.git"
-      system "git push origin master:refs/heads/master --force"
-      puts Paint["[Done]\n", :green]
-
-      # Change back to the original directory
-      Dir.chdir pwd
-    end
+    puts Paint["Changing to development directory...", :yellow]
+    system "cd #{DEVELOPMENT_DIR}"
+    puts Paint["[Done]\n", :green]
   end
 end
-
 task :default => ["site:depoloy"]
 
 # Inspired by: http://ixti.net/software/2013/01/28/using-jekyll-plugins-on-github-pages.html
