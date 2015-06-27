@@ -91,22 +91,31 @@ namespace :site do
     # Commit your site files on master branch
     Dir.mktmpdir do |tmp|
 
-      # Create temporary dir with _site files
-      cp_r "_site/.", tmp
+      print "Creating temp dir with site files..."
+      cp_r "_site/.", tmp # Create temporary dir with _site files
+      pwd = Dir.pwd # Save current dir
+      Dir.chdir tmp # Change to temp dir
+      print " [Done]\n"
 
-      # Save current dir
-      pwd = Dir.pwd
-
-      # Change to temp _site directory and commit to Github master with current timestamp
-      Dir.chdir tmp
+      print "Initializing repo..."
       system "git init"
+      print " [Done]\n"
+
+      print "Committing changes to git..."
       system "git add ."
       message = "Site updated at #{Time.now.utc}"
       system "git commit -m #{message.inspect}"
+      print " [Done]\n"
+
+      print "Changing local user to 'George Banis - gbanis@gmail.com'..."
       system "git config --local user.name 'George Banis'"
       system "git config --local user.email 'gbanis@gmail.com'"
-      system "git remote add production git@github.com-gbanis:#{GITHUB_REPONAME}.git"
-      system "git push production master:refs/heads/master --force"
+      print " [Done]\n"
+
+      print "Pushing (--force) to 'git@github.com-gbanis:#{GITHUB_REPONAME}.git'..."
+      system "git remote add origin git@github.com-gbanis:#{GITHUB_REPONAME}.git"
+      system "git push origin master:refs/heads/master --force"
+      print " [Done]\n"
 
       # Change back to the original directory
       Dir.chdir pwd
