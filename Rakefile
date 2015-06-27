@@ -1,5 +1,5 @@
 #################
-# To publish:
+# To depoloy:
 # $ jkb # => build the website
 # $ gaa
 # $ gcm "Message"
@@ -17,12 +17,6 @@ require "jekyll"
 
 GITHUB_REPONAME = "gbanis/gbanis.github.io"
 STOPWORDS = %w(i a about an are as at be by com for from how in is it of on or that the this to was what when where who will with the www)
-
-
-desc "Build and push to origin/source master"
-task :push do
-  system "git push origin master:refs/heads/source --force"
-end
 
 namespace :new do
   task :post do
@@ -92,8 +86,8 @@ namespace :site do
     })).process
   end
 
-  desc "Generate and publish: blog to master branch, source files to source branch"
-  task :publish => [:generate] do
+  desc "Generate and depoloy: blog to master branch, source files to source branch"
+  task :depoloy => [:generate] do
     # Commit your site files on master branch
     Dir.mktmpdir do |tmp|
 
@@ -109,9 +103,10 @@ namespace :site do
       system "git add ."
       message = "Site updated at #{Time.now.utc}"
       system "git commit -m #{message.inspect}"
-      # system "git remote add origin git@github-:#{GITHUB_REPONAME}.git"
-      system "git remote add origin git@github.com-gbanis:#{GITHUB_REPONAME}.git"
-      system "git push origin master:refs/heads/master --force"
+      system "git config --local user.name 'George Banis'"
+      system "git config --local user.email 'gbanis@gmail.com'"
+      system "git remote add production git@github.com-gbanis:#{GITHUB_REPONAME}.git"
+      system "git push production master:refs/heads/master --force"
 
       # Change back to the original directory
       Dir.chdir pwd
@@ -119,6 +114,6 @@ namespace :site do
   end
 end
 
-task :default => ["site:publish"]
+task :default => ["site:depoloy"]
 
 # Inspired by: http://ixti.net/software/2013/01/28/using-jekyll-plugins-on-github-pages.html
