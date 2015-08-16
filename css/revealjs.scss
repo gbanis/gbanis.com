@@ -1,6 +1,9 @@
 ---
 # Front matter comment to ensure Jekyll properly reads file.
 ---
+.reveal code {
+  opacity: 0.5;
+}
 
 #slide-footer {
   position: fixed;

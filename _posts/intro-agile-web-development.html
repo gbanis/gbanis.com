@@ -1,0 +1,464 @@
+---
+layout:       slide
+title:        "[SLIDES] Intro To Agile Web Development"
+description:  "Gain an intro to agile workflows and learn how to deliver more features in less time using tools like Trello, Git and Github."
+date:         2015-08-09 12:00:00
+tags:
+  - slides
+  - agile
+  - web development
+  - git
+  - github
+  - trello
+author:       George Banis
+---
+<section>
+  <section data-markdown>
+    <script type="text/template">
+      # Agenda
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## Agenda
+
+      - Basic Concepts
+      - Preparation
+      - Workflow
+      - Development
+    </script>
+  </section>
+</section>
+<section data-markdown>
+  <script type="text/template">
+    # Basic Concepts
+  </script>
+</section>
+<section>
+  <section data-markdown>
+    <script type="text/template">
+      # The 80-20 rule
+      ## (The Pareto Principle)
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      > "80% of the effects come from <br/>20% of the causes"
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      In other words...
+      > "20% of your efforts produce <br/>80% of the results"
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## In web development this means:
+
+      - The majority of the features can be developed quickly <br/>(but some need considerably more time)
+      - Trying to be a perfectionist will result in less user value
+      - Constantly ask yourself: Am I adding value?
+    </script>
+  </section>
+</section>
+<section>
+  <section data-markdown>
+    <script type="text/template">
+      # Value
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## What is value?
+
+      - More features
+      - Less bugs
+      - Better UX
+      - Better design
+      - Cleaner code
+      - Better test coverage
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## Be careful of pitfalls!
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      > "Only your user can define your value."
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      # Empathy
+
+      The №1 skill you need to develop.
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## But don\`t just guess.
+
+      ## Ask your users.
+
+      <aside class="notes">
+        - People love being heard<br/>
+        - They get excited with the prospect that their feedback could shape the product they use
+      </aside>
+    </script>
+  </section>
+</section>
+<section>
+  <section data-markdown>
+    <script type="text/template">
+      # Preparation
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## Preparation
+
+      - Brainstorming
+      - Specs
+      - Designs
+      - Stories
+      - Estimates
+    </script>
+  </section>
+</section>
+<section>
+  <section data-markdown>
+    <script type="text/template">
+      # Brainstorming
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## Brainstorming: Gathering Data
+
+      - Info about your users
+      - Product/feature ideas
+      - Competition
+      - Research
+
+      <aside class="notes">
+        - Collect all ideas <br/>
+        - Do not exclude anything
+      </aside>
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## Brainstorming Tools: Mindmup
+      ![Mindmup Sample Brainstorming Mind Map](/assets/mindmup-sample-brainstorming.png)
+    </script>
+  </section>
+</section>
+<section>
+  <section data-markdown>
+    <script type="text/template">
+      # Specs
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## Types of Specs
+
+      - Product Spec
+      - Tech Spec
+    </script>
+  </section>
+</section>
+<section data-markdown>
+  <script type="text/template">
+    ## Product Spec
+
+    - Target audience
+    - Value Proposition
+    - MVP
+    - Features
+    - User flow
+    - Design / Mockups
+  </script>
+</section>
+<section data-markdown>
+  <script type="text/template">
+    ## Tech Spec
+
+    - Architecture
+    - Database Schema
+    - API contracts
+  </script>
+</section>
+<section data-markdown>
+  <script type="text/template">
+    # Development Workflow
+  </script>
+</section>
+<section>
+  <section data-markdown>
+    <script type="text/template">
+      ## Stages
+
+      1. Backlog
+      1. Next Up
+      1. In Development
+      1. In Code Review
+      1. To Release
+      1. Done
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## Stages
+
+      (for smaller teams / projects)
+
+      1. Backlog
+      1. Next Up
+      1. In Development
+      1. Done
+    </script>
+  </section>
+</section>
+<section>
+  <section data-markdown>
+    <script type="text/template">
+      # Workflow Stages
+
+      ![img](/assets/software-engineering-workflow.gif)
+      [Link to Trello template](https://trello.com/b/aKD2qNE3/template-software-engineering-board)
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## Backlog
+
+      - Add new stories and bugs
+      - Arrange by order of importance
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## Next Up
+
+      - Next stories to be  implemented
+      - Move stories from Backlog to this list
+      - Keep 2-3 stories PTM *(per team member)*
+      - Update it once a day
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## In Development
+
+      - Only 1 card PTM in Development
+      - Create a new branch
+      - Work on the branch
+      - Keep the branch fresh (merge `master`)
+      - Run the tests
+      - Move to Code Review
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## In Code Review
+
+      - Open the PR in Github
+      - Look at the diffs
+      - Pull the branch and test it locally
+      - Be very thorough
+      - If all is good, comment "LGTM"
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## To Release
+
+      - Merge to master and:
+      - Run your build suite
+      - Run your continuous integration suite
+      - Deploy to staging
+      - Deploy to production
+      - Wait for complementary stories
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## Done
+
+      - Congrats! You made it!
+      - Now go grab the next story from Next Up
+    </script>
+  </section>
+</section>
+<section>
+  <section data-markdown>
+    <script type="text/template">
+      # Time Estimates
+
+      > &ldquo; It's done when it's done &rdquo;
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## Traditional Estimates <br/>Don't Work
+
+      - Hard to provide accurate estimates
+      - Too many variables
+      - You want to look good &rArr; optimistic estimates
+      - Set impossible expectations &rArr; work overtime to fulfill
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## Example: Wedding Tasks
+
+      - Guest list
+      - Invitations
+      - Gown
+      - Rings
+      - Venues
+      - Photographer
+      - Officiant
+      - Food
+      - Music
+      - Honeymoon
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## Planning Poker
+
+      ~~Time-based estimates~~
+
+      Effort-based estimates
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## The Cards
+
+      - Each member has 6 cards
+      - Cards are marked with the Fibonacci sequence
+      - 1, 2, 3, 5, 8, 13
+      - Why? Easier to understand the difference
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## Planning Poker: How to Play
+
+      1. Go through each task
+      1. Every member selects an "effort-level" card
+      1. Places it face-down
+      1. Reveal all cards simultaneously
+        - If all cards are less than 2 levels appart continue
+        - Otherwise provide explanation and repeat the round
+    </script>
+  </section>
+</section>
+<section data-markdown>
+  <script type="text/template">
+    # Git with Teams
+  </script>
+</section>
+<section>
+  <section data-markdown>
+    <script type="text/template">
+      ## Setup
+
+      [Instructions](https://github.com/gbanis/git-with-teams-workshop)
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## Clone your repo
+
+      ```
+      # 1.Get the SSH link from Github
+      ```
+
+      ```
+      # 2.Clone
+      cd ~/code
+      git clone git@github.com:gbanis/your-repo-name.git
+      cd your-repo-name
+      ```
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## Start a new story
+
+      1. Move the card to "In Development"
+      1. Create a branch on Github
+      1. Fetch and checkout
+      ```
+      git fetch
+      git checkout new-feature-branch
+      ```
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## Work on the story
+
+      - Stage files and commit changes
+      ```
+      git add file1.html file2.css file3.js
+      git commit -m "Feature implemented"
+      ```
+
+      - Also give this a try for staging
+      ```
+      git add -p
+      ```
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## When your feature is done
+
+      1. Merge master
+      ```
+      git checkout master
+      git pull
+      git checkout your-branch-name
+      git merge master
+      ```
+
+      1. Push your branch to Github
+      ```
+      git push
+      ```
+
+      1. Issue a pull request on Github
+
+      1. Move the card to "In Code Review"
+
+      1. Notify your team
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## Pull request approved?
+
+      1. Auto-merge &amp; delete the branch on Github
+      1. Move the card to "To Release"
+    </script>
+  </section>
+  <section data-markdown>
+    <script type="text/template">
+      ## Deploy
+
+      1. Deploy to `staging` &amp; do a sanity check
+      1. Deploy to `production`
+      1. Move the card to "Done"
+    </script>
+  </section>
+</section>
+
+
