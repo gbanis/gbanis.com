@@ -8,12 +8,14 @@ layout: default
 
   <ul class="post-list">
     {% for post in site.posts %}
+    {% if post.unlisted != true %}
     <li>
       <h2>
         <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
       </h2>
       {% include post_meta.html %}
     </li>
+    {% endif %}
     {% endfor %}
   </ul>
 
