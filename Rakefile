@@ -91,7 +91,7 @@ namespace :site do
   end
 
   desc "Generate and depoloy: blog to master branch, source files to source branch"
-  task :depoloy => [:generate] do
+  task :deploy => [:generate] do
 
     Dir.chdir(PRODUCTION_DIR) do
       puts Paint["Committing changes...", :yellow]
@@ -106,6 +106,6 @@ namespace :site do
     end
   end
 end
-task :default => ["site:depoloy"]
+task :default => ["site:deploy"]
 
 # Inspired by: http://ixti.net/software/2013/01/28/using-jekyll-plugins-on-github-pages.html
