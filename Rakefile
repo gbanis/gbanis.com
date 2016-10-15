@@ -10,6 +10,11 @@
 # (you will be prompted to enter post name)
 #################
 
+#################
+# for git errors you will have to wipe everything in the gbanis.com-production
+# and set master and source branches to their respective upstreams
+#################
+
 require "rubygems"
 require "tmpdir"
 require "bundler/setup"
