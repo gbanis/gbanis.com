@@ -45,6 +45,6 @@ I get excited working on new things and I always look for opportunities to work 
   </div>
   <div class="col col-6">
     <p>In my free time I love traveling with my amazing wife, spending time with my Border Collie, golfing, playing ping-pong, and watching football.</p>
-    <p>I also enjoy building app prototypes and contributing to open-source projects.</p>
+    <p>I also enjoy building app prototypes and volunteering as a programming mentor.</p>
   </div>
 </div>
